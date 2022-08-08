@@ -2,7 +2,7 @@ import QtQuick 2.9
 import com.Najafian.PadMode 1.0
 Item {
     id:root
-    readonly property int bMargin: 6
+    readonly property int bMargin: ((height/22)<(width/26))?(height/22):(width/26)
     property color bColor: "White"
     property bool unLockAll: true
 
@@ -10,13 +10,14 @@ Item {
     property int  ctrlMode: PadMode.OneShot;
     property int w1: (width-4*bMargin)/4
     property int h1: (height-4*bMargin)/4
+    readonly property double generalHFTC: 0.4
+    readonly property double generalWFTC: 0.3
 
     signal send(string msg);
     Rectangle{
         id:rect;
         radius: 5
         property int margin: bMargin;
-
         color: bColor
         anchors.fill:root;
 
@@ -36,6 +37,8 @@ Item {
                bText: "7\nabc"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -45,6 +48,8 @@ Item {
                bText: "8\ndef"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -54,6 +59,8 @@ Item {
                bText: "9\nghi"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -64,6 +71,8 @@ Item {
                bText: "Esc"; width: root.w1; height: root.h1
                mode:ctrlMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -75,6 +84,8 @@ Item {
                bText: "4\njkl"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -84,6 +95,8 @@ Item {
                bText: "5\nmno"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -93,6 +106,8 @@ Item {
                bText: "6\npqr"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -102,6 +117,8 @@ Item {
                bText: "Left"; width: root.w1; height: root.h1
                mode:ctrlMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -112,6 +129,8 @@ Item {
                bText: "1\nstu"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -121,6 +140,8 @@ Item {
                bText: "2\nwx"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -130,6 +151,8 @@ Item {
                bText: "3\nyz"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -139,6 +162,8 @@ Item {
                bText: "Right"; width: root.w1; height: root.h1
                mode:ctrlMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -149,6 +174,8 @@ Item {
                bText: "0"; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -158,6 +185,8 @@ Item {
                bText: "."; width: root.w1; height: root.h1
                mode:numMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -168,6 +197,8 @@ Item {
                bText: "<-"; width: root.w1; height: root.h1
                mode:ctrlMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
@@ -177,6 +208,8 @@ Item {
                bText: "Enter"; width: root.w1; height: root.h1
                mode:ctrlMode
                active: unLockAll
+               hFTC: root.generalHFTC
+               wFTC: root.generalWFTC
                onPressed: {
                    root.send(bText);
                }
