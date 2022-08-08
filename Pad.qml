@@ -16,6 +16,8 @@ Item {
     property int firstImgSelect: 4
     property int secoundImgSelect: 1
     property int fontSize: 0
+    property double hFTC: 0
+    property double wFTC: 0
     readonly property int warnImgSel: 2
     readonly property string imgSrc1: "p1.png"
     readonly property string imgSrc2: "p2.png"
@@ -24,6 +26,7 @@ Item {
     readonly property string imgSrc5: "p5.png"
     readonly property string imgSrc6: "p6.png"
     readonly property int bDelay: 100
+
 
     x:0; y:0; z:2; height: 50;  width: 100
     signal pressed();
@@ -113,14 +116,26 @@ Item {
     }
     function calcFontsize(){
         var fs;
-        if(root.fontSize===0){
+
+        if(root.fontSize===0 && root.hFTC===0 && root.wFTC===0){
             var l1=3*(txt1.width)/txt1.text.length;
             var l2=txt1.height*0.2;
            fs=(l1<l2) ?l1:l2;
         }
-        else{
+
+        else if(root.fontSize!==0){
             fs=root.fontSize;
         }
+        else{
+            if(root.hFTC===0)
+                root.hFTC=root.wFTC
+            else if(root.wFTC===0)
+                root.wFTC=root.hFTC
+            var t1=root.height*root.hFTC
+            var t2=root.width*root.wFTC
+            fs=(t1<t2)?t1:t2;
+        }
+
         return fs;
     }
 
@@ -135,25 +150,15 @@ Item {
         Component.onCompleted: {
             checkEnable();
         }
-        onWidthChanged: {
-            txt1.font.pixelSize=calcFontsize();
-        }
-        onHeightChanged: {
-            txt1.font.pixelSize=calcFontsize();
-        }
 
         Text {
             id: txt1
             text: parent.bText;
             anchors.fill: parent
-
-
             horizontalAlignment: Text.AlignHCenter;
             verticalAlignment: Text.AlignVCenter;
             z:2;
-            Component.onCompleted: {
-                font.pixelSize=calcFontsize();
-            }
+            font.pixelSize: root.calcFontsize();
         }
         MouseArea{
             anchors.fill:parent
@@ -164,8 +169,8 @@ Item {
             }
 
             onPressed:{
+                console.debug("w=",rect.width," , h=",rect.height)
                 if(active){
-
                     if(root.warning===false){
                         if(activeBeep){
                             playBeep.play();
