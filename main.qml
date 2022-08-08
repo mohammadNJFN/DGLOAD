@@ -14,8 +14,17 @@ Window {
     property  string rcvtxt: "value"
     property bool isActive: false;
     property bool  isStart: false
+    readonly property double generalHFTC: 0.4
+    readonly property double generalWFTC: 0.25
     Component.onCompleted: {
         mainWindow.showMaximized();
+    }
+
+    function calcFontSize(){
+        var t1=parent.height*root.generalHFTC;
+        var t2=parent.width*root.generalWFTC;
+        var fs=(t1<t2)?t1:t2;
+        return fs;
     }
 
     Text{
@@ -50,29 +59,7 @@ Window {
                 height: parent.h1
                 width: parent.width-(parent.w1+col1.spsc)
             }
-            Pad{
-                id:startBtn
-                height:parent.h1;
-                width :parent.w1;
-                bText: "Start/Stop"
-                mode:PadMode.Controled
-                firstImgSelect: 2
-                secoundImgSelect: 1
-                fontSize: 20
-                enabled: onOffBtn.isOn;
-                onHold: {
-                    if(isStart===false){
-                        isStart=true;
-                        bImgSelect=secoundImgSelect;
-                    }
-                }
-                onPressed: {
-                    if(isStart){
-                        isStart=false;
-                        bImgSelect=firstImgSelect;
-                    }
-                }
-            }
+
         }
         Row{
             id:row1
@@ -82,23 +69,58 @@ Window {
 
             LCD{
                 id:lcd
+                width: parent.width*0.5
                 height: parent.height
-                width:  parent.width*0.55-10
                 enabled: onOffBtn.isOn
             }
             Rectangle{
                 id:midrect
                 height: parent.height
             }
+            Column{
+                id:midcol
+                height: parent.height
+                width: parent.width*0.3
+                spacing: 10
+                Keypad{
+                    id:keypad
+                    width:  parent.width
+                    height: parent.height*0.6
+                    enabled: onOffBtn.isOn
+                    unLockAll: unlockBtn.isUnlocked
+                }
+                Rectangle{
+                    width: parent.width
+                    height:headerRow.h1*2.5
+                }
 
-            Keypad{
-                id:keypad
-                width:  parent.width*0.3-10
-                height: parent.height*0.6
-                enabled: onOffBtn.isOn
-                unLockAll: unlockBtn.isUnlocked
-
+                Pad{
+                    id:startBtn
+                    height:headerRow.h1;
+                    width :headerRow.w1;
+                    x:(keypad.width)/2
+                    bText: "Start/Stop"
+                    mode:PadMode.Controled
+                    firstImgSelect: 2
+                    secoundImgSelect: 1
+                    hFTC: mainWindow.generalHFTC
+                    wFTC: mainWindow.generalWFTC
+                    enabled: onOffBtn.isOn;
+                    onHold: {
+                        if(isStart===false){
+                            isStart=true;
+                            bImgSelect=secoundImgSelect;
+                        }
+                    }
+                    onPressed: {
+                        if(isStart){
+                            isStart=false;
+                            bImgSelect=firstImgSelect;
+                        }
+                    }
+                }
             }
+
             Component.onCompleted: {
                 midrect.width=parent.width-lcd.width-keypad.width-20
             }
@@ -131,6 +153,9 @@ Window {
                 secoundImgSelect: 1
                 activeBeep:false
                 property  bool isOn:false
+                hFTC: mainWindow.generalHFTC
+                wFTC: mainWindow.generalWFTC
+
                 onHold: {
                     if(isOn){
                         keypad.resetAll();
@@ -162,6 +187,8 @@ Window {
                 firstImgSelect:2
                 secoundImgSelect: 1
                 enabled: onOffBtn.isOn
+                hFTC: mainWindow.generalHFTC
+                wFTC: mainWindow.generalWFTC
                 Component.onCompleted: {
                     if(isUnlocked)
                         bImgSelect=secoundImgSelect;
