@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Numpad.qml</file>
+        <file>Pad.qml</file>
+        <file>p1.png</file>
+        <file>p2.png</file>
+        <file>p3.png</file>
+        <file>p4.png</file>
+        <file>p5.png</file>
+        <file>p6.png</file>
+        <file>beep-07a.wav</file>
+        <file>LoadSelect.qml</file>
+        <file>LimitSelect.qml</file>
+        <file>ProgSelect.qml</file>
+        <file>Keypad.qml</file>
+        <file>LCD.qml</file>
+    </qresource>
+</RCC>
