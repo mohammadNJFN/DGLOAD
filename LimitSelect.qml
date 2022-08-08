@@ -6,9 +6,11 @@ Item {
     property string color: "Yellow"
     property int mode: PadMode.Toggle
     readonly property int margin: 5
-    readonly property string title: "Stop \n conditions"
+    readonly property string title: "Stop \ncond.."
     readonly property int imgSel0: 4;
     readonly property int imgSel1: 1;
+    readonly property double generalHFTC: 0.4
+    readonly property double generalWFTC: 0.3
 
     property bool timeLimEnabled: false
     property bool energyLimEnabled: false
@@ -52,7 +54,13 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text:root.title;
-                    font.pointSize: parent.height*0.3
+                    function calcFontSize(){
+                        var t1=parent.height*root.generalHFTC;
+                        var t2=parent.width*root.generalWFTC;
+                        var fs=(t1<t2)?t1:t2;
+                        return fs;
+                    }
+                    font.pixelSize: calcFontSize();
                 }
             }
             Pad{
@@ -64,6 +72,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled:  root.timeLimEnabled;
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -78,6 +88,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.energyLimEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -91,6 +103,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.powerLimEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -104,6 +118,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.voltageLimEnabled;
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -117,6 +133,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.currentLimEnabled;
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
