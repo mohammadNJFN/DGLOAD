@@ -7,6 +7,8 @@ Item {
     property int mode: PadMode.Toggle
     property bool  unLockAll: true;
     readonly property int margin: 5
+    readonly property double generalHFTC: 0.4
+    readonly property double generalWFTC: 0.25
     function resistanceIsSelect(){
         return resTypeBtn.isSelect();
     }
@@ -56,7 +58,13 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text:"Type of load";
-                    font.pointSize: parent.height*0.4
+                    function calcFontSize(){
+                        var t1=parent.height*root.generalHFTC;
+                        var t2=parent.width*root.generalWFTC;
+                        var fs=(t1<t2)?t1:t2;
+                        return fs;
+                    }
+                    font.pixelSize: calcFontSize();
                 }
             }
             Row{
@@ -65,9 +73,11 @@ Item {
                     id:resTypeBtn
                     height: rectparent.h1
                     width: rectparent.w1
-                    bText: "Resistance"
+                    bText: "Resist"
                     mode:root.mode
                     active: unLockAll
+                    hFTC: root.generalHFTC
+                    wFTC: root.generalWFTC
                     onPressed: {
                         pwrTypeBtn.unSelect();
                         currTypeBtn.unSelect();
@@ -83,6 +93,8 @@ Item {
                     bText: "Power"
                     mode:root.mode
                     active: unLockAll
+                    hFTC: root.generalHFTC
+                    wFTC: root.generalWFTC
                     onPressed: {
                         resTypeBtn.unSelect();
                         currTypeBtn.unSelect();
@@ -97,6 +109,8 @@ Item {
                     bText: "Current"
                     mode:root.mode
                     active: unLockAll
+                    hFTC: root.generalHFTC
+                    wFTC: root.generalWFTC
                     onPressed: {
                         pwrTypeBtn.unSelect();
                         resTypeBtn.unSelect();
@@ -111,6 +125,8 @@ Item {
                     bText: "Voltage"
                     mode:root.mode
                     active: unLockAll
+                    hFTC: root.generalHFTC
+                    wFTC: root.generalWFTC
                     onPressed: {
                         pwrTypeBtn.unSelect();
                         currTypeBtn.unSelect();

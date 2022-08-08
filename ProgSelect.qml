@@ -9,6 +9,8 @@ Item {
     readonly property string title: "Programm"
     readonly property int imgSel0: 4;
     readonly property int imgSel1: 1;
+    readonly property double generalHFTC: 0.4
+    readonly property double generalWFTC: 0.2
 
     property bool programmBtnEnabled: true
     property bool loadBtnEnabled: false
@@ -48,7 +50,13 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text:root.title;
-                    font.pointSize: parent.height*0.4
+                    function calcFontSize(){
+                        var t1=parent.height*root.generalHFTC;
+                        var t2=parent.width*root.generalWFTC;
+                        var fs=(t1<t2)?t1:t2;
+                        return fs;
+                    }
+                    font.pixelSize: calcFontSize();
                 }
             }
             Pad{
@@ -60,6 +68,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled:  root.programmBtnEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -73,6 +83,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.loadBtnEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -86,6 +98,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.saveBtnEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -99,6 +113,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.editBtnEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -112,6 +128,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.upBtnEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
@@ -125,6 +143,8 @@ Item {
                 secoundImgSelect: root.imgSel1
                 enabled: root.upBtnEnabled
                 active: unLockAll
+                hFTC: root.generalHFTC
+                wFTC: root.generalWFTC
                 onPressed: {
                     sendChange(bText);
                 }
