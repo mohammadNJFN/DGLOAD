@@ -37,8 +37,8 @@ Window {
             width: parent.width
             height: parent.height*0.05
             spacing: parent.spacing
-            property int w1: width/15;
-            property int h1: height-10;
+            property int w1: width/10;
+            property int h1: height;
             Pad{
                 visible: false
                 width: 0
@@ -46,44 +46,15 @@ Window {
             }
 
             Rectangle{
-                width: 20
-                height: parent.h1
-            }
-
-            Pad{
-                id:stopBtn
-                height:parent.h1;
-                width :parent.w1
-                bText: "Stop"
-                mode:PadMode.Controled
-                firstImgSelect: 1
-                secoundImgSelect: 2
-                fontSize: 20
-                enabled: onOffBtn.isOn
-
-                Component.onCompleted: {
-                    if(isStart===false){
-                        bImgSelect=secoundImgSelect;
-                    }
-                }
-                onPressed: {
-                    if(isStart){
-                        isStart=false;
-                        bImgSelect=firstImgSelect;
-                        startBtn.bImgSelect=secoundImgSelect
-                    }
-                }
-            }
-            Rectangle{
                 id:topSpcRect1
                 height: parent.h1
-                width: parent.width-2*(parent.w1+col1.spsc)
+                width: parent.width-(parent.w1+col1.spsc)
             }
             Pad{
                 id:startBtn
                 height:parent.h1;
                 width :parent.w1;
-                bText: "Start"
+                bText: "Start/Stop"
                 mode:PadMode.Controled
                 firstImgSelect: 2
                 secoundImgSelect: 1
@@ -93,7 +64,12 @@ Window {
                     if(isStart===false){
                         isStart=true;
                         bImgSelect=secoundImgSelect;
-                        stopBtn.bImgSelect=firstImgSelect;
+                    }
+                }
+                onPressed: {
+                    if(isStart){
+                        isStart=false;
+                        bImgSelect=firstImgSelect;
                     }
                 }
             }
