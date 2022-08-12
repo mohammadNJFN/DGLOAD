@@ -16,4 +16,10 @@
         <file>Keypad.qml</file>
         <file>LCD.qml</file>
     </qresource>
+    <qresource prefix="/menu">
+        <file>LoadProgForm.qml</file>
+        <file>SetParameterForm.qml</file>
+        <file>Param.qml</file>
+        <file>CurrentModeForm.qml</file>
+    </qresource>
 </RCC>
