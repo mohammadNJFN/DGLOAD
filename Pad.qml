@@ -84,12 +84,8 @@ Item {
                 else{
                     rect.bImgSelect=firstImgSelect
                 }
-
                 break;
-
             }
-
-
         }
     }
 
@@ -135,7 +131,6 @@ Item {
             var t2=root.width*root.wFTC
             fs=(t1<t2)?t1:t2;
         }
-
         return fs;
     }
 
@@ -150,7 +145,6 @@ Item {
         Component.onCompleted: {
             checkEnable();
         }
-
         Text {
             id: txt1
             text: parent.bText;
