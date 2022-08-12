@@ -36,3 +36,5 @@ HEADERS += \
     IFpadclass.h
 
 DISTFILES +=
+
+STATECHARTS +=
