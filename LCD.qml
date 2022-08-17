@@ -1,7 +1,73 @@
 import QtQuick 2.0
-
+import "qrc:/menu"
 Item {
     id:root
+    property string paramFormName: ""
+    property string fnKeyName: ""
+    property string backgroundColor: "Black"
+    property string curveColor: "White"
+    Param{
+        id:zeroParam
+    }
+    CurrentModeForm{
+        id:currentModeParamSetting
+    }
+    VolatgeModeForm{
+        id:voltageModeFormSetting
+    }
+    PowerModeForm{
+        id:powerModeFormSetting
+    }
+    ResistModeForm{
+        id:resistModeFormSetting
+    }
+    onEnabledChanged: {
+        menuRect.reset();
+        root.paramFormName=""
+    }
+
+    onParamFormNameChanged: {
+        var txt=paramFormName.toUpperCase()
+        console.debug(txt)
+        switch(txt){
+        case "CURRENT":
+            menuRect.param=currentModeParamSetting.param
+            break;
+        case "VOLTAGE":
+            menuRect.param=voltageModeFormSetting.param;
+            break;
+        case "RESIST":
+            menuRect.param=resistModeFormSetting.param;
+            break;
+        case "POWER":
+            menuRect.param=powerModeFormSetting.param;
+            break;
+        default:
+            break;
+        }
+    }
+    onFnKeyNameChanged: {
+        switch(fnKeyName){
+        case "MenuOff":
+            menuRect.menuOff();
+            break;
+        case "F1":
+            if(menuRect.param.getUnit(1)==="Esc")
+                menuRect.menuOff();
+            break;
+        case "F2":
+            break;
+        case "F3":
+            break;
+        case "F4":
+            break;
+        case "F5":
+            break;
+
+        }
+        fnKeyName="";
+    }
+
     Rectangle{
         id:mainRect
         x:root.x;   y:root.y;
@@ -9,8 +75,9 @@ Item {
         width: root.width
         color: "#F0F0F0"
         border.width: 1
-        border.color: "black"
+        border.color: backgroundColor
         radius:5
+
         Row{
             height:parent.height
             width: parent.width
@@ -28,12 +95,12 @@ Item {
                     Rectangle{
                         width: displayColumn.width
                         height: displayColumn.height*0.1
-                        color: "orange"
+                        color: backgroundColor
                     }
                 }
                 Rectangle{
                     id:disp
-                    color:"green"
+                    color: backgroundColor
                     height: parent.height*0.8
                     width: parent.width
                     Canvas{
@@ -45,7 +112,7 @@ Item {
                             var ctx = getContext("2d")
                             // setup the stroke
                             ctx.lineWidth = 4
-                            ctx.strokeStyle = "blue"
+                            ctx.strokeStyle = curveColor
                             // setup the fill
                             ctx.fillStyle = "steelblue"
                             // begin a new path to draw
@@ -72,18 +139,22 @@ Item {
                     Rectangle{
                         width: displayColumn.width
                         height: displayColumn.height*0.1
-                        color: "orange"
+                        color: backgroundColor
                     }
                 }
             }
 
-            Rectangle{
+            SetParamDisplay{
                 id: menuRect
                 y:10
+                maxWidth: parent.width*0.5-parent.spacing
                 height: parent.height-2*parent.spacing
-                width: fixedWidth
-                property  int fixedWidth: parent.width*0.1-parent.spacing
-                color:"blue"
+                width: 0
+                param: mainRect.obj
+                backgroundColor: root.backgroundColor
+                textColor: "white"
+                innerBorderColor: "white"
+                outerBorderColor: "white"
 
             }
         }
