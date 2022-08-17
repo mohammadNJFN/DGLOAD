@@ -13,7 +13,7 @@ Item {
         limSelect.resetAll();
         progselPanel.resetAll();
     }
-
+    signal selectLoad(string loadname);
     Rectangle{
         width: root.width
         height: root.height
@@ -37,6 +37,8 @@ Item {
                     width: parent.width
                     unLockAll: root.unLockAll
                     onSendChange: {
+                        root.selectLoad(msg);
+
                         if(ldSelect.resistanceIsSelect()){
                             limSelect.timeLimEnabled=true;
                             limSelect.energyLimEnabled=true;
