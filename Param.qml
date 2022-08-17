@@ -15,8 +15,27 @@ Item {
     property bool unit4Enable: false
     property bool unit5Enable: false
     property string title: "Untitled"
-    property string paramName: "NoDefined"
-    property real param: 0
+    property string param1Name: "NoDefined"
+    property string param2Name: "NoDefined"
+    property int paramCount: 1
+    property real param1Value: 0
+    property real param2Value: 0
+    property DoubleValidator range1:DoubleValidator{
+        bottom:0.0
+        top:1.0
+    }
+    property DoubleValidator range2:DoubleValidator{
+        bottom:0.0
+        top:1.0
+    }
+    property DoubleValidator range3:DoubleValidator{
+
+        bottom:0.0
+        top:1.0
+    }
+
+    property int selectedRange: 1
+
     function getUnit(unitNum){
         switch(unitNum){
         case 1:
@@ -50,4 +69,5 @@ Item {
         }
 
     }
+
 }
