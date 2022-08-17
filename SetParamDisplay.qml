@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.9
 import QtQuick.Controls 2.2
 Item {
     id:root
@@ -149,7 +149,10 @@ Item {
                                 height: parent.height
                                 font.pointSize: root.calcFontsize(width,height,0.3,0.3);
                                 text:root.param.param1Name
-                                background: backgroundColor
+                                background:Rectangle{
+                                    anchors.fill: parent
+                                    color:backgroundColor
+                                }
                                 color: textColor
                                 verticalAlignment: Label.AlignVCenter
                                 horizontalAlignment: Label.AlignRight
@@ -184,7 +187,10 @@ Item {
                                 verticalAlignment: Label.AlignVCenter
 
                                 color: textColor
-                                background: backgroundColor
+                                background:Rectangle{
+                                    anchors.fill: parent
+                                    color:backgroundColor
+                                }
                                 font.pointSize: root.calcFontsize(width,height,0.3,0.5);
                             }
                         }

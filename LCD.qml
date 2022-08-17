@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.9
 import "qrc:/menu"
 Item {
     id:root
@@ -103,34 +103,30 @@ Item {
                     color: backgroundColor
                     height: parent.height*0.8
                     width: parent.width
+
                     Canvas{
                         id:cnvs
-
                         anchors.fill: parent
+                        contextType: "2d"
+
+                        Path {
+                            id: myPath
+                            startX: 0; startY: 100
+
+                            PathCurve { x: 75; y: 75 }
+                            PathCurve { x: 200; y: 150 }
+                            PathCurve { x: 325; y: 25 }
+                            PathCurve { x: 400; y: 100 }
+
+                        }
+
                         onPaint: {
-                            // get context to draw with
-                            var ctx = getContext("2d")
-                            // setup the stroke
-                            ctx.lineWidth = 4
-                            ctx.strokeStyle = curveColor
-                            // setup the fill
-                            ctx.fillStyle = "steelblue"
-                            // begin a new path to draw
-                            ctx.beginPath()
-                            // top-left start point
-                            ctx.moveTo(50,50)
-                            // upper line
-                            ctx.lineTo(150,50)
-                            // right line
-                            ctx.lineTo(150,150)
-                            // bottom line
-                            ctx.lineTo(50,150)
-                            // left line through path closing
-                            ctx.closePath()
-                            // fill using fill style
-                            ctx.fill()
-                            // stroke using line width and stroke style
-                            ctx.stroke()
+                            context.lineWidth =5
+                            context.strokeStyle ="white"// Qt.rgba(.4,.6,.8);
+                            context.strokeWidth=5
+                            context.path = myPath;
+                            context.stroke();
+
                         }
                     }
                 }
