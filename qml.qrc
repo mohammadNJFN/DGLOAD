@@ -15,11 +15,15 @@
         <file>ProgSelect.qml</file>
         <file>Keypad.qml</file>
         <file>LCD.qml</file>
+        <file>FuncKeypad.qml</file>
     </qresource>
     <qresource prefix="/menu">
         <file>LoadProgForm.qml</file>
-        <file>SetParameterForm.qml</file>
         <file>Param.qml</file>
         <file>CurrentModeForm.qml</file>
+        <file>SetParamDisplay.qml</file>
+        <file>VolatgeModeForm.qml</file>
+        <file>PowerModeForm.qml</file>
+        <file>ResistModeForm.qml</file>
     </qresource>
 </RCC>
