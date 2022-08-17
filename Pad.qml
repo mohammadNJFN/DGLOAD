@@ -19,13 +19,13 @@ Item {
     property double hFTC: 0
     property double wFTC: 0
     readonly property int warnImgSel: 2
-    readonly property string imgSrc1: "p1.png"
-    readonly property string imgSrc2: "p2.png"
-    readonly property string imgSrc3: "p3.png"
-    readonly property string imgSrc4: "p4.png"
-    readonly property string imgSrc5: "p5.png"
-    readonly property string imgSrc6: "p6.png"
-    readonly property int bDelay: 100
+    readonly property string imgSrc1: "Images/p1.png"
+    readonly property string imgSrc2: "Images/p2.png"
+    readonly property string imgSrc3: "Images/p3.png"
+    readonly property string imgSrc4: "Images/p4.png"
+    readonly property string imgSrc5: "Images/p5.png"
+    readonly property string imgSrc6: "Images/p6.png"
+    readonly property int    bDelay : 100
 
 
     x:0; y:0; z:2; height: 50;  width: 100

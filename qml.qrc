@@ -3,12 +3,6 @@
         <file>main.qml</file>
         <file>Numpad.qml</file>
         <file>Pad.qml</file>
-        <file>p1.png</file>
-        <file>p2.png</file>
-        <file>p3.png</file>
-        <file>p4.png</file>
-        <file>p5.png</file>
-        <file>p6.png</file>
         <file>beep-07a.wav</file>
         <file>LoadSelect.qml</file>
         <file>LimitSelect.qml</file>
@@ -25,5 +19,13 @@
         <file>VolatgeModeForm.qml</file>
         <file>PowerModeForm.qml</file>
         <file>ResistModeForm.qml</file>
+    </qresource>
+    <qresource prefix="/Images">
+        <file>p1.png</file>
+        <file>p2.png</file>
+        <file>p3.png</file>
+        <file>p4.png</file>
+        <file>p5.png</file>
+        <file>p6.png</file>
     </qresource>
 </RCC>
