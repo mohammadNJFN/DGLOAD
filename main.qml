@@ -2,7 +2,7 @@ import QtQuick 2.9
 import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
 import com.Najafian.PadMode 1.0
-
+import "qrc:/menu"
 Window {
     id :mainWindow
     visible: true
@@ -12,28 +12,44 @@ Window {
     title: qsTr("DL")
 
     property  string rcvtxt: "value"
-    property bool isActive: false;
-    property bool  isStart: false
+    property bool isActive: false
+    property bool isStart: false
     readonly property double generalHFTC: 0.4
     readonly property double generalWFTC: 0.25
+
+    property bool onVisibilityFlag: false
+    property bool onWidthFlag:      false
+
+    function changeSizeEffects(){
+        var mw=row1.width-lcd.width-keypad.width-fkeypad.width-15*row1.spacing
+        midrect.width=(mw>0)?mw:0;
+    }
+    Timer{
+        id:changeSizeTimer
+        interval: 100;
+        onTriggered: {
+            if(onVisibilityFlag){
+
+                changeSizeEffects();
+            }
+            if(onWidthFlag){
+
+                changeSizeEffects();
+            }
+        }
+    }
     Component.onCompleted: {
-        mainWindow.showMaximized();
+        mainWindow.showFullScreen();
+    }
+    onVisibilityChanged: {
+        onVisibilityFlag=true;
+        changeSizeTimer.start();
+    }
+    onWidthChanged: {
+        onWidthFlag=true;
+        changeSizeTimer.start();
     }
 
-    function calcFontSize(){
-        var t1=parent.height*root.generalHFTC;
-        var t2=parent.width*root.generalWFTC;
-        var fs=(t1<t2)?t1:t2;
-        return fs;
-    }
-
-    Text{
-        x:0;
-        y:0;
-        width: 50;
-        height: 30;
-        text: rcvtxt;
-    }
     Column{
 
         id:col1
@@ -48,10 +64,38 @@ Window {
             spacing: parent.spacing
             property int w1: width/10;
             property int h1: height;
-            Pad{
+            Button{
+                id:minimizeBtn
+                width: 20
+                height: 20
+                text: "-"
+                onClicked: {
+                    fullscreenBtn.visible=true;
+                    mainWindow.showMinimized()
+                    visible=false
+                }
+            }
+            Button{
+                id:fullscreenBtn
+                width: 25
+                height: 20
+                text: "FS"
                 visible: false
-                width: 0
-                height: 0
+                onClicked: {
+                    mainWindow.showFullScreen();
+                    minimizeBtn.visible=true
+                    visible=false
+                }
+            }
+
+            Button{
+                id:closeBtn
+                width: 20
+                height: 20
+                text: "X"
+                onClicked: {
+                    mainWindow.close()
+                }
             }
 
             Rectangle{
@@ -73,6 +117,16 @@ Window {
                 height: parent.height
                 enabled: onOffBtn.isOn
             }
+
+            FuncKeypad{
+                id:fkeypad
+                width:parent.width/20
+                height: parent.height
+                onSend: {
+                    lcd.fnKeyName=msg;
+                }
+            }
+
             Rectangle{
                 id:midrect
                 height: parent.height
@@ -82,12 +136,21 @@ Window {
                 height: parent.height
                 width: parent.width*0.3
                 spacing: 10
+                Rectangle{
+                    height: parent.height*0.15
+                    width: parent.width
+                }
+
                 Keypad{
                     id:keypad
                     width:  parent.width
                     height: parent.height*0.6
                     enabled: onOffBtn.isOn
                     unLockAll: unlockBtn.isUnlocked
+                    onSelectLoad: {
+                       lcd.paramFormName=loadname
+                        console.debug("onSelectLoad:",loadname)
+                    }
                 }
                 Rectangle{
                     width: parent.width
@@ -98,7 +161,7 @@ Window {
                     id:startBtn
                     height:headerRow.h1;
                     width :headerRow.w1;
-                    x:(keypad.width)/2
+                    x:keypad.x  + (keypad.width)/2
                     bText: "Start/Stop"
                     mode:PadMode.Controled
                     firstImgSelect: 2
@@ -121,9 +184,6 @@ Window {
                 }
             }
 
-            Component.onCompleted: {
-                midrect.width=parent.width-lcd.width-keypad.width-20
-            }
         }
         Row{
             id:footerRow
@@ -162,10 +222,13 @@ Window {
                         isOn=false
                         bImgSelect=2
                         activeBeep=false;
+                        unlockBtn.enabled=false
                     }
                     else{
                         isOn=true
+                        unlockBtn.enabled=true
                         unlockBtn.unSelect();
+
                         bImgSelect=1
                         activeBeep=true;
                     }
@@ -186,17 +249,15 @@ Window {
                 mode:PadMode.Controled
                 firstImgSelect:2
                 secoundImgSelect: 1
-                enabled: onOffBtn.isOn
+                enabled: false
                 hFTC: mainWindow.generalHFTC
                 wFTC: mainWindow.generalWFTC
-                Component.onCompleted: {
-                    if(isUnlocked)
-                        bImgSelect=secoundImgSelect;
-                    else
-                        bImgSelect=firstImgSelect;
-                }
+                bImgSelect: firstImgSelect
                 onEnabledChanged: {
                     isUnlocked=false
+                    if(enabled){
+                        bImgSelect=firstImgSelect;
+                    }
                 }
 
                 onPressed:{
@@ -214,6 +275,8 @@ Window {
                     }
                 }
             }
+
+
         }
     }
 }
