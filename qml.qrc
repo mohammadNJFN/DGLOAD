@@ -8,7 +8,6 @@
         <file>LimitSelect.qml</file>
         <file>ProgSelect.qml</file>
         <file>Keypad.qml</file>
-        <file>LCD.qml</file>
         <file>FuncKeypad.qml</file>
     </qresource>
     <qresource prefix="/menu">
@@ -27,5 +26,9 @@
         <file>p4.png</file>
         <file>p5.png</file>
         <file>p6.png</file>
+    </qresource>
+    <qresource prefix="/LCD">
+        <file>LCD.qml</file>
+        <file>CurveView.qml</file>
     </qresource>
 </RCC>

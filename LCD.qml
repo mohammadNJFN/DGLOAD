@@ -1,4 +1,5 @@
 import QtQuick 2.9
+
 import "qrc:/menu"
 Item {
     id:root
@@ -100,35 +101,65 @@ Item {
                 }
                 Rectangle{
                     id:disp
-                    color: backgroundColor
                     height: parent.height*0.8
                     width: parent.width
-
-                    Canvas{
-                        id:cnvs
-                        anchors.fill: parent
-                        contextType: "2d"
-
-                        Path {
-                            id: myPath
-                            startX: 0; startY: 100
-
-                            PathCurve { x: 75; y: 75 }
-                            PathCurve { x: 200; y: 150 }
-                            PathCurve { x: 325; y: 25 }
-                            PathCurve { x: 400; y: 100 }
-
+                    CurveView{
+                        id:curveview
+                        height: parent.height
+                        width: parent.width
+                        color: "black"
+                        curveColor: "yellow"
+                        axisColor:"white"
+                        gridColor: "white"
+                        Component.onCompleted: {
+                            for(var i=0;i<20;i++){
+                                addPoint(40+0.1*i*i-i);
+                            }
+                            showCurve();
+                        }
+                        property Timer changeWaitTim:Timer{
+                            interval: 200
+                            onTriggered: {
+                                parent.autoScaleCurve()
+                                parent.showCurve();
+                            }
                         }
 
-                        onPaint: {
-                            context.lineWidth =5
-                            context.strokeStyle ="white"// Qt.rgba(.4,.6,.8);
-                            context.strokeWidth=5
-                            context.path = myPath;
-                            context.stroke();
+                        onWidthChanged: {
+                            changeWaitTim.start();
+                        }
+                        onHeightChanged: {
+                            changeWaitTim.start();
+                        }
+
+                    }
+                    property Timer testTim: Timer{
+                        interval: 1000
+                        onTriggered: {
+                            var i=0
+                            curveview.resetCurve();
+                            for( i=0;i<=20;i++){
+                                if(i<5){
+                                    curveview.addPoint(45);
+                                }
+                                else if(i<10){
+                                    curveview.addPoint(0);
+                                }
+                                else if(i<15){
+                                    curveview.addPoint(60);
+                                }
+                                else if(i<=20){
+                                    curveview.addPoint(99);
+                                }
+                            }
+                            curveview.showCurve();
 
                         }
                     }
+                    Component.onCompleted: {
+                        testTim.start();
+                    }
+
                 }
                 Row{
                     id:footerRow;

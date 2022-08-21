@@ -70,12 +70,8 @@ Item {
                        font.pointSize: calcFontSize(width,height,0.3,0.5);
                        verticalAlignment: Text.AlignVCenter
                        horizontalAlignment: Text.AlignHCenter
-
-
                    }
                 }
-
-
             }
 
             Pad{

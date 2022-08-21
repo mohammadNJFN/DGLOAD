@@ -3,6 +3,7 @@ import QtQuick.Window 2.3
 import QtQuick.Controls 2.2
 import com.Najafian.PadMode 1.0
 import "qrc:/menu"
+import "qrc:/LCD"
 Window {
     id :mainWindow
     visible: true
