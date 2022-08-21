@@ -82,7 +82,12 @@ Item {
                         pwrTypeBtn.unSelect();
                         currTypeBtn.unSelect();
                         vltTypeBtn.unSelect();
-                        sendChange(bText);
+                        if(isSelect()){
+                            sendChange(bText);
+                        }
+                        else{
+                            sendChange("Off:"+bText.toString())
+                        }
                     }
 
                 }
@@ -99,7 +104,12 @@ Item {
                         resTypeBtn.unSelect();
                         currTypeBtn.unSelect();
                         vltTypeBtn.unSelect();
-                        sendChange(bText);
+                        if(isSelect()){
+                            sendChange(bText);
+                        }
+                        else{
+                            sendChange("Off:"+bText.toString())
+                        }
                     }
                 }
                 Pad{
@@ -115,7 +125,12 @@ Item {
                         pwrTypeBtn.unSelect();
                         resTypeBtn.unSelect();
                         vltTypeBtn.unSelect();
-                        sendChange(bText);
+                        if(isSelect()){
+                            sendChange(bText);
+                        }
+                        else{
+                            sendChange("Off:"+bText.toString())
+                        }
                     }
                 }
                 Pad{
@@ -131,7 +146,12 @@ Item {
                         pwrTypeBtn.unSelect();
                         currTypeBtn.unSelect();
                         resTypeBtn.unSelect();
-                        sendChange(bText);
+                        if(isSelect()){
+                            sendChange(bText);
+                        }
+                        else{
+                            sendChange("Off:"+bText.toString())
+                        }
                     }
                 }
             }

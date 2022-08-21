@@ -43,6 +43,12 @@ Item {
         case "POWER":
             menuRect.param=powerModeFormSetting.param;
             break;
+        case "OFF:CURRENT":
+        case "OFF:VOLTAGE":
+        case "OFF:RESIST":
+        case "OFF:POWER":
+            fnKeyName="MenuOff";
+            break;
         default:
             break;
         }
@@ -51,10 +57,14 @@ Item {
         switch(fnKeyName){
         case "MenuOff":
             menuRect.menuOff();
+            paramFormName="";
+            menuRect.param=zeroParam
             break;
         case "F1":
             if(menuRect.param.getUnit(1)==="Esc")
                 menuRect.menuOff();
+                paramFormName="";
+                menuRect.param=zeroParam
             break;
         case "F2":
             break;
