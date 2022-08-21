@@ -1,5 +1,7 @@
 import QtQuick 2.0
 import com.Najafian.PadMode 1.0
+import "qrc:/Keypad/Pad"
+
 Item {
     id:root
     signal send(string msg);

@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import com.Najafian.PadMode 1.0
+import "qrc:/Keypad/Pad"
 Item {
     id:root
     readonly property int bMargin: ((height/22)<(width/26))?(height/22):(width/26)

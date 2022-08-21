@@ -4,6 +4,8 @@ import QtQuick.Controls 2.2
 import com.Najafian.PadMode 1.0
 import "qrc:/menu"
 import "qrc:/LCD"
+import "qrc:/Keypad"
+import "qrc:/Keypad/Pad"
 Window {
     id :mainWindow
     visible: true

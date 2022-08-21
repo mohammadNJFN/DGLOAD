@@ -1,5 +1,6 @@
 import QtQuick 2.0
 
+import "qrc:/Keypad/Pad"
 Item {
     id:root
     property bool unLockAll: true

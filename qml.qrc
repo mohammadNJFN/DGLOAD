@@ -1,14 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Numpad.qml</file>
-        <file>Pad.qml</file>
-        <file>beep-07a.wav</file>
-        <file>LoadSelect.qml</file>
-        <file>LimitSelect.qml</file>
-        <file>ProgSelect.qml</file>
-        <file>Keypad.qml</file>
-        <file>FuncKeypad.qml</file>
     </qresource>
     <qresource prefix="/menu">
         <file>LoadProgForm.qml</file>
@@ -19,7 +11,7 @@
         <file>PowerModeForm.qml</file>
         <file>ResistModeForm.qml</file>
     </qresource>
-    <qresource prefix="/Images">
+    <qresource prefix="/Keypad/Pad/Images">
         <file>p1.png</file>
         <file>p2.png</file>
         <file>p3.png</file>
@@ -30,5 +22,17 @@
     <qresource prefix="/LCD">
         <file>LCD.qml</file>
         <file>CurveView.qml</file>
+    </qresource>
+    <qresource prefix="/Keypad/Pad">
+        <file>Pad.qml</file>
+        <file>beep-07a.wav</file>
+    </qresource>
+    <qresource prefix="/Keypad">
+        <file>FuncKeypad.qml</file>
+        <file>Keypad.qml</file>
+        <file>Numpad.qml</file>
+        <file>ProgSelect.qml</file>
+        <file>LimitSelect.qml</file>
+        <file>LoadSelect.qml</file>
     </qresource>
 </RCC>
