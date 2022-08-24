@@ -22,6 +22,8 @@
     <qresource prefix="/LCD">
         <file>LCD.qml</file>
         <file>CurveView.qml</file>
+        <file>TopBar.qml</file>
+        <file>BottomBar.qml</file>
     </qresource>
     <qresource prefix="/Keypad/Pad">
         <file>Pad.qml</file>
@@ -34,5 +36,15 @@
         <file>ProgSelect.qml</file>
         <file>LimitSelect.qml</file>
         <file>LoadSelect.qml</file>
+    </qresource>
+    <qresource prefix="/LCD/ItemBox">
+        <file>ItemBoxBase.qml</file>
+        <file>OneLineItemBox.qml</file>
+        <file>TwoLineItemBox.qml</file>
+        <file>TwoLineItemBox_copy.qml</file>
+    </qresource>
+    <qresource prefix="/util">
+        <file>Utility.qml</file>
+        <file>Theme.qml</file>
     </qresource>
 </RCC>

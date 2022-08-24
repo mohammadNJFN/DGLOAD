@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
+import "qrc:/util"
 Item {
     id:root
     property Param zeroParam: Param{
@@ -23,6 +24,9 @@ Item {
     property string outerBorderColor: "black"
     property int outerBorderWidth: 3
     z:2
+    Utility{
+        id:util
+    }
 
     SequentialAnimation{
         id:openMenuAnimation
@@ -64,18 +68,7 @@ Item {
         param=zeroParam
     }
 
-    function calcFontsize(w,h,wC,hC){
-        var fs;
-        if(hC===0)
-            hC=wC
-        else if(wC===0)
-            wC=hC
-        var t1=h*hC
-        var t2=w*wC
-        fs=(t1<t2)?t1:t2;
-        fs=(fs>0.0001)?fs:0.0001;
-        return fs;
-    }
+
     Rectangle{
         height: root.height-3
         width: root.width-3
@@ -147,7 +140,7 @@ Item {
                                 width:  parent.width*0.4
 
                                 height: parent.height
-                                font.pointSize: root.calcFontsize(width,height,0.3,0.3);
+                                font.pointSize: util.calcFontSize(width,height,0.3,0.3);
                                 text:root.param.param1Name
                                 background:Rectangle{
                                     anchors.fill: parent
@@ -176,7 +169,7 @@ Item {
                                 }
 
                                 text:root.param.param1Value.toString();
-                                font.pointSize: root.calcFontsize(width,height,0.3,0.5);
+                                font.pointSize: util.calcFontSize(width,height,0.3,0.5);
                                 readOnly: true
                             }
 
@@ -191,7 +184,7 @@ Item {
                                     anchors.fill: parent
                                     color:backgroundColor
                                 }
-                                font.pointSize: root.calcFontsize(width,height,0.3,0.5);
+                                font.pointSize: util.calcFontSize(width,height,0.3,0.5);
                             }
                         }
                     }
@@ -252,7 +245,7 @@ Item {
                             text: root.param.getUnit(1)
 
                             color: textColor
-                            font.pointSize:root.calcFontsize(width,height,
+                            font.pointSize:util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -272,7 +265,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(2)
-                            font.pointSize:root.calcFontsize(width,height,
+                            font.pointSize:util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -292,7 +285,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(3)
-                            font.pointSize:root.calcFontsize(width,height,
+                            font.pointSize:util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -312,7 +305,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(4)
-                            font.pointSize:root.calcFontsize(width,height,
+                            font.pointSize:util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -332,7 +325,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(5)
-                            font.pointSize:root.calcFontsize(width,height,
+                            font.pointSize:util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }

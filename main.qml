@@ -113,6 +113,12 @@ Window {
             spacing: 10
             width: parent.width
             height: parent.height*0.8
+            Rectangle{
+                width: 0
+                height: parent.height
+
+                color:"black"
+            }
 
             LCD{
                 id:lcd

@@ -1,12 +1,14 @@
 import QtQuick 2.9
 
 import "qrc:/menu"
+import "qrc:/util"
 Item {
     id:root
     property string paramFormName: ""
     property string fnKeyName: ""
     property string backgroundColor: "Black"
     property string curveColor: "White"
+    property string textColor: "White"
     Param{
         id:zeroParam
     }
@@ -81,9 +83,7 @@ Item {
 
     Rectangle{
         id:mainRect
-        x:root.x;   y:root.y;
-        height: root.height
-        width: root.width
+        anchors.fill: parent
         color: "#F0F0F0"
         border.width: 1
         border.color: backgroundColor
@@ -98,20 +98,22 @@ Item {
                 id:displayColumn
                 height: parent.height-2*parent.spacing
                 width: parent.width-menuRect.width-2*parent.spacing
-                x:5; y:5
+                x:0; y:5
                 spacing: 5
-
-                Row{
-                    id:headerRow;
-                    Rectangle{
-                        width: displayColumn.width
-                        height: displayColumn.height*0.1
-                        color: backgroundColor
-                    }
+                property Theme barTheme: Theme{
+                    backColor: "transparent";//root.backgroundColor
+                    textColor: root.textColor
                 }
+                TopBar{
+
+                    height: parent.height*0.04
+                    width: parent.width
+                    theme:parent.barTheme
+                }
+
                 Rectangle{
                     id:disp
-                    height: parent.height*0.8
+                    height: parent.height*0.87
                     width: parent.width
                     CurveView{
                         id:curveview
@@ -171,13 +173,11 @@ Item {
                     }
 
                 }
-                Row{
-                    id:footerRow;
-                    Rectangle{
-                        width: displayColumn.width
-                        height: displayColumn.height*0.1
-                        color: backgroundColor
-                    }
+                BottomBar{
+                    height: parent.height*0.08
+                    width: parent.width
+                    theme:parent.barTheme
+
                 }
             }
 
