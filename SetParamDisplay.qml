@@ -38,7 +38,7 @@ Item {
             easing.overshoot: 1.5
             to:targetWidth
             duration: 500
-            easing.type: Easing.OutBack
+            easing.type: Easing.InBounce
         }
 
     }
@@ -80,7 +80,7 @@ Item {
             Rectangle{
                 id:setParameterRect
                 height:root.height
-                width: root.width*0.8
+                width: root.width*0.7
                 border.width:root.innerBorderWidth
                 border.color: root.innerBorderColor
                 color:backgroundColor
