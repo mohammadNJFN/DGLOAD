@@ -2,11 +2,13 @@ import QtQuick 2.9
 import QtQuick.Controls 2.2
 import QtQuick.Particles 2.0
 import QtMultimedia 5.9
-import padclass 1.0
+
 import com.Najafian.PadMode 1.0
+
 Item {
     id:root
-    property int mode: PadMode.Simple
+
+    property int mode: PadMode.Simple;
     property int bImgSelect:firstImgSelect
     property string bText: "text"
     property bool activeBeep: true
@@ -93,18 +95,7 @@ Item {
         checkEnable();
     }
 
-    PadCode{
-      id:padc;
-        onQmlClickChanged: {
-            console.log("click",bText)
-        }
-        onSetMode: {
-            mode=qmode;
-        }
-        onSetText: {
-            bText=qtxt;
-        }
-    }
+
     onBImgSelectChanged: {
         if(mode===PadMode.Controled){
             rect.bImgSelect=bImgSelect;
@@ -184,7 +175,7 @@ Item {
                             }
                         }
                         root.pressed();
-                        padc.setQmlClick(true);
+                        //padc.setQmlClick(true);
                     }
                     else{
                         console.debug(root.bText,"Btn pressed: warning  ")

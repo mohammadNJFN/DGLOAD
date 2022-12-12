@@ -41,7 +41,6 @@
         <file>ItemBoxBase.qml</file>
         <file>OneLineItemBox.qml</file>
         <file>TwoLineItemBox.qml</file>
-        <file>TwoLineItemBox_copy.qml</file>
     </qresource>
     <qresource prefix="/util">
         <file>Utility.qml</file>

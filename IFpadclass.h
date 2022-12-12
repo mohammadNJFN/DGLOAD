@@ -17,6 +17,7 @@ public:
 };
 
 typedef PadModeClass::Value PadMode;
+
 class PadClass : public QObject
 {
     Q_OBJECT
