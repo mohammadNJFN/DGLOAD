@@ -101,7 +101,7 @@ Item {
                 x:0; y:5
                 spacing: 5
                 property Theme barTheme: Theme{
-                    backColor: "transparent";//root.backgroundColor
+                    backColor: "transparent";
                     textColor: root.textColor
                 }
                 TopBar{

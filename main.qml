@@ -160,6 +160,7 @@ Window {
                        lcd.paramFormName=loadname
                         console.debug("onSelectLoad:",loadname)
                     }
+
                 }
                 Rectangle{
                     width: parent.width

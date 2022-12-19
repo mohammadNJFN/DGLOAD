@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "IFpadclass.h"
+#include <QIcon>
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -30,8 +31,9 @@ int main(int argc, char *argv[])
 
 
     engine.load(url);
+    QIcon icon(":icon.png");
 
-
+    app.setWindowIcon(icon);
 
     return app.exec();
 }

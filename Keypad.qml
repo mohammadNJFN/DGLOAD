@@ -15,6 +15,8 @@ Item {
         progselPanel.resetAll();
     }
     signal selectLoad(string loadname);
+    signal sendNum(string keyName);
+    signal sendLimit(string limitName);
     Rectangle{
         width: root.width
         height: root.height
@@ -26,6 +28,9 @@ Item {
                 visible: true
                 unLockAll: root.unLockAll
                 x:50; y:0; width: parent.width/4; height: parent.height
+                onSendChange: {
+                    sendLimit(msg);
+                }
             }
             Column{
                 spacing: parent.spacing
@@ -84,6 +89,7 @@ Item {
                     unLockAll: root.unLockAll
                     onSend: {
                         rcvtxt=msg;
+                        root.sendNum(msg);
                     }
                 }
             }

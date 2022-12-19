@@ -38,15 +38,13 @@ Item {
             easing.overshoot: 1.5
             to:targetWidth
             duration: 500
-            easing.type: Easing.InBounce
+            easing.type: Easing.Linear
         }
 
     }
     onParamChanged: {
-        console.debug("title=",param.title)
         if(param!==zeroParam){
             targetWidth=maxWidth
-            console.debug("menu change width")
             active=true;
         }
         else{
@@ -55,8 +53,6 @@ Item {
         }
         openMenuAnimation.running=true;
 
-        console.debug("menu width=",width)
-        console.debug("menu maxWidth=",maxWidth)
         setParameterRect.calcHeights(param.paramCount);
     }
     function reset(){

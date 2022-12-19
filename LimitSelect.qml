@@ -74,8 +74,13 @@ Item {
                 active: unLockAll
                 hFTC: root.generalHFTC
                 wFTC: root.generalWFTC
+
                 onPressed: {
-                    sendChange(bText);
+                    if(isSelect())
+                        sendChange(bText + "_sel");
+                    else
+                        sendChange(bText + "_unsel");
+
                 }
 
             }
@@ -90,8 +95,13 @@ Item {
                 active: unLockAll
                 hFTC: root.generalHFTC
                 wFTC: root.generalWFTC
+
                 onPressed: {
-                    sendChange(bText);
+                    if(isSelect())
+                        sendChange(bText + "_sel");
+                    else
+                        sendChange(bText + "_unsel");
+
                 }
             }
             Pad{
@@ -105,8 +115,13 @@ Item {
                 active: unLockAll
                 hFTC: root.generalHFTC
                 wFTC: root.generalWFTC
+
                 onPressed: {
-                    sendChange(bText);
+                    if(isSelect())
+                        sendChange(bText + "_sel");
+                    else
+                        sendChange(bText + "_unsel");
+
                 }
             }
             Pad{
@@ -120,8 +135,13 @@ Item {
                 active: unLockAll
                 hFTC: root.generalHFTC
                 wFTC: root.generalWFTC
+
                 onPressed: {
-                    sendChange(bText);
+                    if(isSelect())
+                        sendChange(bText + "_sel");
+                    else
+                        sendChange(bText + "_unsel");
+
                 }
             }
             Pad{
@@ -135,8 +155,13 @@ Item {
                 active: unLockAll
                 hFTC: root.generalHFTC
                 wFTC: root.generalWFTC
+
                 onPressed: {
-                    sendChange(bText);
+                    if(isSelect())
+                        sendChange(bText + "_sel");
+                    else
+                        sendChange(bText + "_unsel");
+
                 }
             }
         }
