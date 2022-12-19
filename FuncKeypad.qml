@@ -53,18 +53,6 @@ Item {
                        anchors.fill: parent
                        text:"Menu\noff"
                        font.family: "MS Serif"
-                       function calcFontsize(w,h,wC,hC){
-                           var fs;
-                           if(hC===0)
-                               hC=wC
-                           else if(wC===0)
-                               wC=hC
-                           var t1=h*hC
-                           var t2=w*wC
-                           fs=(t1<t2)?t1:t2;
-                           fs=(fs>0.0001)?fs:0.0001;
-                           return fs;
-                       }
                        onWidthChanged: {
                            font.pointSize=calcFontSize(width,height,0.5,0.5);
                        }
