@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Utility.js</file>
     </qresource>
     <qresource prefix="/menu">
         <file>LoadProgForm.qml</file>
@@ -42,8 +43,7 @@
         <file>OneLineItemBox.qml</file>
         <file>TwoLineItemBox.qml</file>
     </qresource>
-    <qresource prefix="/util">
-        <file>Utility.qml</file>
+    <qresource prefix="/Theme">
         <file>Theme.qml</file>
     </qresource>
 </RCC>

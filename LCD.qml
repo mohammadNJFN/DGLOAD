@@ -1,7 +1,7 @@
 import QtQuick 2.9
 
 import "qrc:/menu"
-import "qrc:/util"
+import "qrc:/Theme"
 Item {
     id:root
     property string paramFormName: ""

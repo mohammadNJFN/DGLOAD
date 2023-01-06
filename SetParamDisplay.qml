@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.2
-import "qrc:/util"
+import "qrc:/Theme"
+import "qrc:/Utility.js" as Util
 Item {
     id:root
     property Param zeroParam: Param{
@@ -24,9 +25,6 @@ Item {
     property string outerBorderColor: "black"
     property int outerBorderWidth: 3
     z:2
-    Utility{
-        id:util
-    }
 
     SequentialAnimation{
         id:openMenuAnimation
@@ -37,7 +35,7 @@ Item {
             property: "width"
             easing.overshoot: 1.5
             to:targetWidth
-            duration: 500
+            duration: 250
             easing.type: Easing.Linear
         }
 
@@ -136,7 +134,7 @@ Item {
                                 width:  parent.width*0.4
 
                                 height: parent.height
-                                font.pointSize: util.calcFontSize(width,height,0.3,0.3);
+                                font.pointSize: Util.calcFontSize(width,height,0.3,0.3);
                                 text:root.param.param1Name
                                 background:Rectangle{
                                     anchors.fill: parent
@@ -165,7 +163,7 @@ Item {
                                 }
 
                                 text:root.param.param1Value.toString();
-                                font.pointSize: util.calcFontSize(width,height,0.3,0.5);
+                                font.pointSize: Util.calcFontSize(width,height,0.3,0.5);
                                 readOnly: true
                             }
 
@@ -180,7 +178,7 @@ Item {
                                     anchors.fill: parent
                                     color:backgroundColor
                                 }
-                                font.pointSize: util.calcFontSize(width,height,0.3,0.5);
+                                font.pointSize: Util.calcFontSize(width,height,0.3,0.5);
                             }
                         }
                     }
@@ -241,7 +239,7 @@ Item {
                             text: root.param.getUnit(1)
 
                             color: textColor
-                            font.pointSize:util.calcFontSize(width,height,
+                            font.pointSize:Util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -261,7 +259,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(2)
-                            font.pointSize:util.calcFontSize(width,height,
+                            font.pointSize:Util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -281,7 +279,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(3)
-                            font.pointSize:util.calcFontSize(width,height,
+                            font.pointSize:Util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -301,7 +299,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(4)
-                            font.pointSize:util.calcFontSize(width,height,
+                            font.pointSize:Util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }
@@ -321,7 +319,7 @@ Item {
 
                             color: textColor
                             text: root.param.getUnit(5)
-                            font.pointSize:util.calcFontSize(width,height,
+                            font.pointSize:Util.calcFontSize(width,height,
                                                              unitCol1.wC,unitCol1.hC);
                         }
                     }

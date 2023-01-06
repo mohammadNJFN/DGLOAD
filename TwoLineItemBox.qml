@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import "qrc:/util"
+import "qrc:/Theme"
 
 Item {
     id:root
@@ -37,7 +37,7 @@ Item {
             id:titleBox
             height:row.txtSize.height
             width: row.txtSize.width
-            theme: root.theme;
+            theme: root.Theme;
             text:  root.title+":"
             textSizeCoef: root.titleSizeCoef;
             hAlignment: Text.AlignRight
@@ -47,7 +47,7 @@ Item {
                 id:upValueBox
                 height:row.valSize.height
                 width: row.valSize.width
-                theme:root.theme;
+                theme:root.Theme;
                 text: (root.upValueTxt.concat(root.upUnitName));
                 textSizeCoef: root.valSizeCoef;
                 hAlignment: Text.AlignLeft
@@ -62,7 +62,7 @@ Item {
                 id:downValueBox
                 height:row.valSize.height
                 width: row.valSize.width
-                theme:root.theme;
+                theme:root.Theme;
                 text: root.downValueTxt.concat(root.downUnitName);
                 textSizeCoef: root.valSizeCoef;
                 hAlignment: Text.AlignLeft

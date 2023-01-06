@@ -1,17 +1,15 @@
 import QtQuick 2.9
-import "qrc:/util"
+import "qrc:/Utility.js" as Util
+
 Item {
 
-    Utility{
-        id:util;
-    }
     property Param param : Param{
         unitQty: 5
         unit1: "Esc"
         unit2: "Apply"
         unit3: ""
-        unit4: util.bigOmega
-        unit5: "m"+util.bigOmega
+        unit4:Util.bigOmega
+        unit5: "m"+Util.bigOmega
         title: "Setting constant resistance "
         param1Name: "Value:"
         param1Value:0

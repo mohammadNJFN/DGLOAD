@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import "qrc:/LCD/ItemBox"
-import "qrc:/util"
+import "qrc:/Theme"
+
+import "qrc:/Utility.js" as Util
 
 Item {
     id:root
@@ -58,9 +60,6 @@ Item {
         box.theme=value;
     }
 
-    Utility{
-        id:util;
-    }
     Row{
         id:mainRow
         anchors.fill:parent
@@ -134,7 +133,7 @@ Item {
            id:valBOX_R
            height:parent.height;
            width:parent.wunit; title: "R";
-           valueTxt: "00.00"; unitName: "m"+util.bigOmega
+           valueTxt: "00.00"; unitName: "m"+Util.bigOmega
            titleSizeCoef: parent.generalTitleSizeCoef
            valSizeCoef: parent.generalValueSizeCoef
            theme:theme;
